@@ -1,34 +1,29 @@
 const express = require('express');
 const router = express.Router();
-const axios = require('axios');
 
-// Import existing routes
-const lyricsRouter = require('./lyrics');
-const songinfoRouter = require('./songinfo');
+// Import des fonctions existantes
+const { getLyrics } = require('./lyrics');
+const { getSongInfo } = require('./songinfo');
 
-// Use existing routes
-router.use('/lyrics', lyricsRouter);
-router.use('/songinfo', songinfoRouter);
-
-// New route for song profile
+// Nouvelle route pour le profil de la chanson
 router.get('/:artist/:title', async (req, res) => {
   try {
     const { artist, title } = req.params;
 
-    // Call existing routes to retrieve data
-    const lyricsResponse = await axios.get(`/${artist}/${title}`, { baseURL: 'http://localhost:3000/lyrics' });
-    const songinfoResponse = await axios.get(`/${artist}/${title}`, { baseURL: 'http://localhost:3000/songinfo' });
+    // Appel des fonctions existantes pour récupérer les données
+    const lyrics = await getLyrics(artist, title);
+    const songInfo = await getSongInfo(artist, title);
 
-    // Combine responses
+    // Combinaison des réponses
     const songProfile = {
-      lyrics: lyricsResponse.data,
-      songInfo: songinfoResponse.data
+      lyrics: lyrics,
+      songInfo: songInfo
     };
 
-    // Send song profile
+    // Envoi du profil de la chanson
     res.json(songProfile);
   } catch (error) {
-    // Error handling
+    // Gestion des erreurs
     res.status(500).json({ message: 'An error occurred', error: error.message });
   }
 });
