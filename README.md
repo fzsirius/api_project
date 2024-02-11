@@ -2,8 +2,10 @@
 
 ## Project Objective
 
-The objective of this project is to create an API that allows users to search for song lyrics and analyze the text within those lyrics. 
+The objective of this project is to create an API that allows users to search for song lyrics and retrieve information related to the song, such as the author, release date, etc.
 
-When a user searches for the lyrics of a song, the API fetches the lyrics then classifies the entities within the text. Entities can include characters mentioned in the lyrics, places, and more. This could help users analyze the underlying meanings and themes in a song's lyrics.
+When a user searches for a song, the API fetches the lyrics from the Lyrics.ovh API and retrieves additional information about the song using the Genius API. This includes details like the author, release date, and more.
 
-This project is in its early stages. The current focus is on setting up the server, installing necessary dependencies, and configuring the Genius and TextRazor APIs. Future updates will include the implementation of the search and analysis functionalities, error handling, and more.
+This API is designed to be simple to use, providing developers with easy access to song information for integration into their applications.
+
+This project is in its early stages. The current focus is on setting up the server, integrating necessary APIs, and retrieving basic song information. Future updates will include implementing additional functionalities, error handling, and more.
