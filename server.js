@@ -1,7 +1,12 @@
-// Import the Express framework
+require('dotenv').config();
 const express = require('express');
-// Create an Express application instance
 const app = express();
+
+// Import the lyrics route
+const lyricsRouter = require('./routes/lyrics');
+
+// Use the lyrics route
+app.use('/lyrics', lyricsRouter);
 
 // Example route
 app.get('/', (req, res) => {
@@ -15,4 +20,3 @@ app.listen(PORT, () => {
   // Log a message indicating that the server is listening on a specific port
   console.log(`Server is listening on port ${PORT}`);
 });
-
