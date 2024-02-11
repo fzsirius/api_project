@@ -2,8 +2,6 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 
-console.log(process.env.GENIUS_API_KEY); // Log the Genius API key to check if it is loaded correctly
-
 // Import the lyrics route
 const lyricsRouter = require('./routes/lyrics');
 // Use the lyrics route
@@ -13,6 +11,12 @@ app.use('/lyrics', lyricsRouter);
 const songinfoRouter = require('./routes/songinfo');
 // Use the songinfo route
 app.use('/songinfo', songinfoRouter);
+
+// Import of the new route
+const songProfileRouter = require('./routes/songProfile');
+
+// Use of the new route
+app.use('/songProfile', songProfileRouter);
 
 // Example route
 app.get('/', (req, res) => {
