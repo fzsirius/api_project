@@ -1,17 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Song Lyrics Analyzer API</title>
+    <link rel="stylesheet" href="./assets/styles.css">
 </head>
 <body>
 
-    <form id="song-search-form">
-        <input type="text" id="artist" placeholder="Nom de l'artiste">
-        <input type="text" id="title" placeholder="Titre de la chanson">
-        <button type="submit">Rechercher</button>
-    </form>
-    <div id="song-profile"></div>
+    <header class="header">
+        <img src="https://cdn-icons-png.flaticon.com/512/2420/2420418.png" alt="Icône" class="icon">
+        <h1 class="title">Paroles de Chansons</h1>
+    </header>
     
+
+    <main class="main-content">
+        <section class="search-section">
+            <h2 class="section-title">Recherche de Paroles</h2>
+            <form id="song-search-form" class="search-form">
+                <input type="text" id="artist" placeholder="Nom de l'artiste" class="input-field">
+                <input type="text" id="title" placeholder="Titre de la chanson" class="input-field">
+                <button type="submit" class="search-button">Rechercher</button>
+            </form>
+        </section>
+
+        <section id="song-profile" class="song-profile"></section>
+    </main>
+
+    <footer class="footer">
+        <p class="footer-text">© 2024 Song Lyrics. Fehizoro RANDIRAMISANTA, Karim TCHERE</p>
+    </footer>
+
     <script src="app.js"></script>
 </body>
 </html>
