@@ -2,6 +2,8 @@ document.getElementById('song-search-form').addEventListener('submit', function(
     event.preventDefault();
     const artist = document.getElementById('artist').value;
     const title = document.getElementById('title').value;
+    
+    // Effectuer une requête GET vers la route songProfile en utilisant les valeurs saisies par l'utilisateur
     fetch(`/songProfile/${encodeURIComponent(artist)}/${encodeURIComponent(title)}`)
         .then(response => {
             if (!response.ok) {
@@ -10,7 +12,7 @@ document.getElementById('song-search-form').addEventListener('submit', function(
             return response.json();
         })
         .then(data => {
-            // Afficher les données renvoyées par la route songProfile
+            // Afficher les données renvoyées par la route songProfile dans la console
             console.log('Données renvoyées par songProfile:', data);
 
             // Mettre à jour l'interface utilisateur avec les données
