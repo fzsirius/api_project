@@ -1,25 +1,31 @@
 document.getElementById('song-search-form').addEventListener('submit', function(event) {
-    event.preventDefault();
+    event.preventDefault(); // Prevent the default form submission behavior
+    
+    // Get the values entered by the user for artist and title
     const artist = document.getElementById('artist').value;
     const title = document.getElementById('title').value;
-    
-    // Effectuer une requête GET vers la route songProfile en utilisant les valeurs saisies par l'utilisateur
+
+    // Perform a GET request to the songProfile route using the user-entered values
     fetch(`/songProfile/${encodeURIComponent(artist)}/${encodeURIComponent(title)}`)
         .then(response => {
+            // Check if the response is okay
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
-            return response.json();
+            return response.json(); // Parse the response as JSON
         })
         .then(data => {
-            // Afficher les données renvoyées par la route songProfile dans la console
-            console.log('Données renvoyées par songProfile:', data);
+            // Log the data returned by songProfile to the console for debugging
+            console.log('Data returned by songProfile:', data);
 
-            // Mettre à jour l'interface utilisateur avec les données
+            // Update the user interface with the returned data
             document.getElementById('song-profile').innerHTML = `
                 <h2>${data.songInfo.full_title}</h2>
                 <p>${data.lyrics.lyrics}</p>
+                <p>Artist: ${data.songInfo.artist_names}</p>
+                <p>Release Date: ${data.songInfo.release_date_for_display}</p>
+                <!-- Add other information here as needed -->
             `;
         })
-        .catch(error => console.error('An error occurred:', error));
+        .catch(error => console.error('An error occurred:', error)); // Catch any errors that occur during the process
 });

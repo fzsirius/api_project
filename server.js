@@ -2,20 +2,20 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 
-// Import des routes existantes
+// Import existing routes
 const lyricsRouter = require('./routes/lyrics');
 const songinfoRouter = require('./routes/songinfo');
 const songProfileRouter = require('./routes/songProfile');
 
-// Utilisation des routes existantes
+// Use existing routes
 app.use('/lyrics', lyricsRouter);
 app.use('/songinfo', songinfoRouter);
 app.use('/songProfile', songProfileRouter);
 
-// Dossier public
+// Public folder
 app.use(express.static('public'));
 
-// Start du serveur
+// Start the server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);
