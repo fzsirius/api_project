@@ -1,0 +1,133 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Song Lyrics API",
+    "description": "An API that provides lyrics for songs along with song information such as artist, release date, etc.",
+    "version": "1.0.0"
+  },
+  "components": {
+    "schemas": {
+      "SongInfo": {
+        "type": "object",
+        "properties": {
+          "title": { "type": "string" },
+          "artist": { "type": "string" },
+          "release_date": { "type": "string", "format": "date" }
+        }
+      },
+      "Lyrics": {
+        "type": "object",
+        "properties": {
+          "lyrics": { "type": "string" }
+        }
+      }
+    }
+  },
+  "paths": {
+    "/lyrics/{artist}/{title}": {
+      "get": {
+        "summary": "Get the lyrics of the song",
+        "parameters": [
+          {
+            "name": "artist",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" },
+            "description": "The artist of the song"
+          },
+          {
+            "name": "title",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" },
+            "description": "The title of the song"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Song information and lyrics",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "songInfo": { "$ref": "#/components/schemas/SongInfo" },
+                    "lyrics": { "$ref": "#/components/schemas/Lyrics" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/songinfo/{artist}/{title}": {
+      "get": {
+        "summary": "Get information about the song",
+        "parameters": [
+          {
+            "name": "artist",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" },
+            "description": "The artist of the song"
+          },
+          {
+            "name": "title",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" },
+            "description": "The title of the song"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Song information",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/SongInfo" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/songprofile/{artist}/{title}": {
+      "get": {
+        "summary": "Get song profile (lyrics and information)",
+        "parameters": [
+          {
+            "name": "artist",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" },
+            "description": "The artist of the song"
+          },
+          {
+            "name": "title",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" },
+            "description": "The title of the song"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Song profile (lyrics and information)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "songInfo": { "$ref": "#/components/schemas/SongInfo" },
+                    "lyrics": { "$ref": "#/components/schemas/Lyrics" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
