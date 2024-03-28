@@ -4,36 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Swagger Documentation</title>
-    <!-- Lien vers le fichier CSS de Swagger UI -->
+    <!-- Link to CSS Swagger UI -->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/swagger-ui-dist/swagger-ui.css">
     <style>
-        /* Style CSS pour le conteneur du bouton */
         .button-container {
             position: absolute;
-            top: 60px; /* Ajustez la valeur en fonction de la hauteur de votre en-tête */
-            right: 20px; /* Ajustez la valeur pour définir la position du bouton */
+            top: 60px; 
+            right: 20px; 
         }
     </style>
 </head>
 <body>
 
-    <!-- Bouton pour retourner à la page principale -->
+    <!-- return button -->
     <div class="button-container">
         <button onclick="window.location.href = 'index.html';">Retour à la page principale</button>
     </div>
 
-    <!-- Conteneur pour afficher Swagger UI -->
+    <!-- container to display Swagger UI -->
     <div id="swagger-ui"></div>
 
-    <!-- Script pour charger Swagger UI -->
     <script src="https://cdn.jsdelivr.net/npm/swagger-ui-dist/swagger-ui-bundle.js"></script>
-<!-- Script pour charger Swagger UI -->
 <script src="https://cdn.jsdelivr.net/npm/swagger-ui-dist/swagger-ui-bundle.js"></script>
 <script>
-    // Initialiser Swagger UI lors du chargement de la page
+    // Initialize Swagger UI on page load 
     window.onload = function() {
         const ui = SwaggerUIBundle({
-            url: "swagger.json", // Remplacez par le chemin vers votre fichier OpenAPI JSON
+            url: "swagger.json", 
 
             dom_id: '#swagger-ui',
             presets: [

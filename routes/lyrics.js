@@ -2,30 +2,29 @@ const express = require('express');
 const router = express.Router();
 const axios = require('axios');
 
-// Définition de la fonction getLyrics
+// function getLyrics
 async function getLyrics(artist, title) {
   try {
-    // Faire une requête à l'API Lyrics.ovh pour obtenir les paroles
+    // Make a request to the Lyrics.ovh API to get the lyrics
     const response = await axios.get(`https://api.lyrics.ovh/v1/${artist}/${title}`);
     return response.data;
   } catch (error) {
-    // Gérer les erreurs
+    // hanle errors
     throw new Error('An error occurred while fetching lyrics');
   }
 }
 
-// Route pour obtenir les paroles d'une chanson
+// Route to retrieve the lyrics of a song
 router.get('/:artist/:title', async (req, res) => {
   try {
     const { artist, title } = req.params;
     
-    // Appeler la fonction getLyrics pour récupérer les paroles
+    // Call the getLyrics function to retrieve the lyrics
     const lyrics = await getLyrics(artist, title);
     
-    // Envoyer les paroles en réponse
+    // Send the lyrics as a response
     res.json(lyrics);
   } catch (error) {
-    // Gérer les erreurs
     res.status(500).json({ message: 'An error occurred', error: error.message });
   }
 });
