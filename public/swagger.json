@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Song Lyrics API",
-    "description": "An API that provides lyrics for songs along with song information such as artist, release date, etc.",
+    "description": "An API that provides lyrics for songs along with song information such as artist, release date, etc.\nTo use the API, follow these steps:\n\n1. Clone the repository to your local machine.\n2. Install the dependencies by running npm install.\n3. Obtain API keys: For the Genius API, visit the Genius API Client management page to create an API client for your application. This will provide you with a client_id and a client_secret.\n4. Configure your API keys: Create a .env file in the root directory of the project. Add your Genius API client_id and client_secret to the .env file.\n5. Launch the server by running npm start.\n6. Access the API endpoints using the provided routes.",
     "version": "1.0.0"
   },
   "components": {

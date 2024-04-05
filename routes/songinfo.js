@@ -4,6 +4,11 @@ const axios = require('axios');
 
 // Define the getSongInfo function
 async function getSongInfo(artist, title) {
+  // Check if artist or title is missing or empty
+  if (!artist || !title) {
+    throw new Error('Both artist and title must be provided');
+  }
+
   try {
     // Make a request to the Genius API to get information about the song
     const response = await axios.get(`https://api.genius.com/search?q=${encodeURIComponent(artist)}%20${encodeURIComponent(title)}`, {
